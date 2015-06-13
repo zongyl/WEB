@@ -27,6 +27,7 @@
         <mapping class="com.qianbao.model.Qbtask"/>
         <mapping class="com.yhjj.model.YhUsers"/>
         <mapping class="com.yhjj.model.DeviceUser"/>
+        <mapping class="com.yonghe.model.Order"/>
         
     </session-factory>
 
