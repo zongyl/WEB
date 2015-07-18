@@ -28,8 +28,9 @@ public class Test {
 		HibernateDao.init();
 		
 		dao = new HibernateDao();
-		//1 - 43865 is null   575136
- 		for(int i = 500000; i < 1000000; i++){
+		//1 - 43865 is null   575136 639379 639396 1045465 1052905 1116080 1152880 1160677 1165850 1163859
+ 		for(int i = 1163859; i < 1165851; i++){
+ 			log.info("orderId : " + i);
 			execute(i);
 		}
 		//execute(500000);
@@ -39,7 +40,7 @@ public class Test {
 		try {
 			html = HttpUtils.getString("http://www.4000979797.com/online/api/mc/order/detail.json?orderId="+id);
 			if("".equals(html)){
-				log.info(id+" is null");
+				//log.info(id+" is null");
 			}else{
 				JSONObject obj = JSON.parseObject(html);
 				maps.clear();
@@ -58,7 +59,7 @@ public class Test {
 	
 	public static void parseJsonObj(JSONObject obj){
 		for(String key : obj.keySet()){
-			log.info("key:"+key);
+			//log.info("key:"+key);
 			if(obj.get(key) instanceof JSONObject){
 				parseJsonObj((JSONObject)obj.get(key));
 			}else{
@@ -81,7 +82,7 @@ public class Test {
 		order.setUserComments(obj.get("userComments").toString());
 		order.setStoreName(obj.get("storeName").toString());
 		order.setOrderItemList(obj.get("orderItemList").toString());
-		order.setCommits(obj.get("commits")==null?"null":obj.get("commits").toString());
+		order.setCommits(obj.get("comments")==null?"null":obj.get("comments").toString());
 		dao.save(order);
 	}
 }

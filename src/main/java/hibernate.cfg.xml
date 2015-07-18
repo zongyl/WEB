@@ -29,6 +29,10 @@
         <mapping class="com.yhjj.model.DeviceUser"/>
         <mapping class="com.yonghe.model.Order"/>
         
+        <mapping class="com.shannxi.model.Hukou"/>
+        <mapping class="com.shannxi.model.Renkou"/>
+        <mapping class="com.shannxi.model.Jieyu"/>
+        
     </session-factory>
 
 </hibernate-configuration>

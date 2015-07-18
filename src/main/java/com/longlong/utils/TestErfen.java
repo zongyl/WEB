@@ -13,12 +13,10 @@ public class TestErfen {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		client.getHttpConnectionManager().getParams().setConnectionTimeout(12000);
 		client.getHttpConnectionManager().getParams().setSoTimeout(12000);
 		//System.out.println(".........................................");
-		erfen(550000, 605000);
-
+		erfen(1163859, 1170000, "http://www.4000979797.com/online/api/mc/order/detail.json?orderId=");
 	}
 	
 	/**
@@ -27,13 +25,15 @@ public class TestErfen {
 	 * @param end
 	 * @return
 	 */
-	public static int erfen(int start, int end){
+	public static int erfen(int start, int end, String url){
 	      	int i = start + (end - start)/2;
+	      	log.info(start+"====="+end+"====="+i);
 	      	if((end - start) > 1){
-	      		if(istrue(i)){
-		      		erfen(i, end);
+	      		if(istrue(url + i)){
+	      			log.info("true!");
+	      			erfen(i, end, url);
 		      	}else{
-		      		erfen(start, i);
+		      		erfen(start, i, url);
 		      	}
 	      	}
 		return 0;
@@ -44,9 +44,9 @@ public class TestErfen {
 	 * @param index
 	 * @return ture or false
 	 */
-	public static boolean istrue(int index){
-		get = new GetMethod("http://www.weituitui.com/users/" + index);
-		log.info("userId:" + index);
+	public static boolean istrue(String url){
+		log.info(url);
+		get = new GetMethod(url);
 		try {
 			client.executeMethod(get);
 		} catch (Exception e) {
